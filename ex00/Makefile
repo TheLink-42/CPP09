@@ -6,7 +6,7 @@
 #    By: jbaeza-c <jbaeza-c@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:13:48 by jimmy             #+#    #+#              #
-#    Updated: 2025/03/13 13:35:32 by jbaeza-c         ###   ########.fr        #
+#    Updated: 2025/03/14 13:23:01 by jbaeza-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RESET = \033[0m
 
 
 # Target
-NAME = easyFind
+NAME = btc
 
 
 

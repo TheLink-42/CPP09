@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyFind.tpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbaeza-c <jbaeza-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 12:24:51 by jimmy             #+#    #+#             */
-/*   Updated: 2025/03/13 13:20:47 by jbaeza-c         ###   ########.fr       */
+/*   Created: 2025/03/14 13:23:19 by jbaeza-c          #+#    #+#             */
+/*   Updated: 2025/03/14 13:53:34 by jbaeza-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_TPP
-# define EASYFIND_TPP
+#include "BitcoinExchange.hpp"
 
-# include <algorithm>
-
-template <typename Container>
-typename Container::iterator easyFind(Container& container, int value)
+BitcoinExchange::BitcoinExchange()
 {
-	typename Container::iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-		throw NotFoundException();
-	return it;
+	
 }
 
-#endif
+BitcoinExchange::~BitcoinExchange()
+{
+
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other): _values(other)
+{
+
+}
+
+BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& other)
+{
+	if (*this != other)
+		_values = other._values;
+	return *this;
+}
+
+
+
+
+bool	BitcoinExchange::loadData(std::string fileName)
+{
+	
+}

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyFind.hpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbaeza-c <jbaeza-c@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 11:54:03 by jimmy             #+#    #+#             */
-/*   Updated: 2025/03/13 13:37:18 by jbaeza-c         ###   ########.fr       */
+/*   Created: 2025/03/14 13:10:11 by jbaeza-c          #+#    #+#             */
+/*   Updated: 2025/03/14 13:51:30 by jbaeza-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
-# include <exception>
+# include <map>
+# include <string>
+# include <fstream>
 
-class	NotFoundException: public std::exception
+class BitcoinExchange
 {
+	private:
+		std::map<std::string, float>	_values;
+
 	public:
-		virtual const char* what() const throw()
-		{
-			return ("Not found");
-		}
-};	
+		BitcoinExchange();
+		~BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange& other);
+		BitcoinExchange& operator=(const BitcoinExchange& other);
 
-template <typename Container>
-typename Container::iterator easyFind(Container& container, int value);
-
-# include "easyFind.tpp"
+		bool	loadData(std::string fileName);
+}
 
 #endif
