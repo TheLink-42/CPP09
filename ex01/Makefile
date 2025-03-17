@@ -6,7 +6,7 @@
 #    By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:13:48 by jimmy             #+#    #+#              #
-#    Updated: 2025/03/14 20:34:02 by jimmy            ###   ########.fr        #
+#    Updated: 2025/03/16 14:39:01 by jimmy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RESET = \033[0m
 
 
 # Target
-NAME = btc
+NAME = RPN
 
 
 
@@ -35,7 +35,7 @@ OBJ_DIR = obj/
 
 # Source files
 SRC = 	$(SRC_DIR)main.cpp					\
-		$(SRC_DIR)BitcoinExchange.cpp
+		$(SRC_DIR)RPN.cpp
 
 # Object files
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
