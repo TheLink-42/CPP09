@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:38:50 by jimmy             #+#    #+#             */
-/*   Updated: 2025/03/16 14:38:32 by jimmy            ###   ########.fr       */
+/*   Updated: 2025/03/20 10:26:04 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ int	RPN::algorithm(const std::string& mathExpression)
 
 const char*	RPN::InvalidInputException::what(void) const throw()
 {
-	return ("Error: mathematical expression contains invalid characters or is not in RPN");
+	return ("Error: mathematical expression contains invalid characters");
 }
 
 const char*	RPN::OverflowOperationException::what(void) const throw()
