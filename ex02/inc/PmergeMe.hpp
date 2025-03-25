@@ -6,7 +6,7 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 23:50:28 by jimmy             #+#    #+#             */
-/*   Updated: 2025/03/20 11:17:53 by jimmy            ###   ########.fr       */
+/*   Updated: 2025/03/24 22:08:17 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,13 @@
 # include <string>
 # include <cmath>
 # include <limits>
+# include <utility>
+# include <sys/time.h>
 
 # define INT_MAX std::numeric_limits<int>::max()
 
-class PmergeMe {
-	private:
-		std::list<int>		_listContainer;
-		std::vector<int>	_vectorContainer;
-
-
-
-	public:
-		PmergeMe();
-		~PmergeMe();
-		PmergeMe(const PmergeMe& other);
-		PmergeMe& operator=(const PmergeMe& other);
-
-		void	loadContainers(std::string value);
-		void	displaySequence() const;
-		void	displayTimes() const;
-		void	sortList();
-		void	sortVector();
-
-		class InvalidInputException : public std::exception{
-			public:
-				virtual const char *what() const throw();
-		};
-
-};
+void	loadContainers(const std::string& str, std::vector<int>& vectorData, std::list<int>& listData);
+void	sortVector(std::vector<int>& vectorData);
+void	sortList(std::list<int>& listData);
 
 #endif
