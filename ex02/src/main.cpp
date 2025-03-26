@@ -6,13 +6,13 @@
 /*   By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 13:21:17 by jbaeza-c          #+#    #+#             */
-/*   Updated: 2025/03/24 22:46:44 by jimmy            ###   ########.fr       */
+/*   Updated: 2025/03/26 02:49:43 by jimmy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iostream>
-# include <chrono>
+#include <sys/time.h>
 
 static long long getTimeInMicroseconds()
 {
@@ -21,38 +21,48 @@ static long long getTimeInMicroseconds()
 	return (static_cast<long long>(time.tv_sec) * 1000000LL + time.tv_usec);
 }
 
-static void	loadData(int argc, char** argv, std::vector<int>& vectorData, std::list<int>& listData)
+static void	loadData(int argc, char** argv, PmergeMe<std::vector<int> >& vectorContainer, PmergeMe<std::deque<int> >& dequeContainer)
 {
 	for (int i = 1; i < argc; i++)
 	{
 		std::string	str(argv[i]);
-		loadContainers(str, vectorData, listData);
+		vectorContainer.add(str);
+		dequeContainer.add(str);
 	}
 }
 
 
-static void	sortData(std::vector<int>& vectorData, std::list<int>& listData)
+static void	sortData(PmergeMe<std::vector<int> >& vectorContainer, PmergeMe<std::deque<int> >& dequeContainer)
 {
-	int	size = vectorData.size();
 	long long	vectorTime = 0;
-	long long	listTime = 0;
+	long long	dequeTime = 0;
 	long long	startTime = 0;
 	long long	endTime = 0;
 
+	double		vTime = 0.0;
+	double		dTime = 0.0;
+
 	std::cout << "Before ";
-	for (int i = 0; i < size; i++)
-		std::cout << " " << vectorData[i];
-	std::cout << std::endl;
+	vectorContainer.displayContainer();
 
 	startTime = getTimeInMicroseconds();
-	sortVector(vectorData);
+	vectorContainer.sort();
 	endTime = getTimeInMicroseconds();
 	vectorTime = endTime - startTime;
 
 	startTime = getTimeInMicroseconds();
-	sortList(listData);
+	dequeContainer.sort();
 	endTime = getTimeInMicroseconds();
-	listTime = endTime - startTime;
+	dequeTime = endTime - startTime;
+
+	vTime = static_cast<double>(vectorTime) / 1000;
+	dTime = static_cast<double>(dequeTime) / 1000;
+
+	std::cout << "After ";
+	vectorContainer.displayContainer();
+
+	std::cout << "Time to process a range of " << vectorContainer.size() << " elements with std::vector: " << vTime << " ms" << std::endl;
+	std::cout << "Time to process a range of " << vectorContainer.size() << " elements with std::deque: " << dTime << " ms" << std::endl;
 }
 
 int main(int argc, char **argv)
@@ -64,11 +74,11 @@ int main(int argc, char **argv)
 	}
 	try
 	{
-		std::vector<int>	vectorData;
-		std::list<int>		listData;
+		PmergeMe<std::vector<int> >	vectorContainer;
+		PmergeMe<std::deque<int> > dequeContainer;
 
-		loadData(argc, argv, vectorData, listData);
-		sortData(vectorData, listData);
+		loadData(argc, argv, vectorContainer, dequeContainer);
+		sortData(vectorContainer, dequeContainer);
 	}
 	catch(const std::exception& e)
 	{

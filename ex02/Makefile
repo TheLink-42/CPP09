@@ -6,7 +6,7 @@
 #    By: jimmy <jimmy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 03:13:48 by jimmy             #+#    #+#              #
-#    Updated: 2025/03/20 10:50:14 by jimmy            ###   ########.fr        #
+#    Updated: 2025/03/26 03:21:18 by jimmy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RESET = \033[0m
 
 
 # Target
-NAME = mergeInsertSort
+NAME = PmergeMe
 
 
 
@@ -34,8 +34,7 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 # Source files
-SRC = 	$(SRC_DIR)main.cpp					\
-		$(SRC_DIR)PmergeMe.cpp
+SRC = 	$(SRC_DIR)main.cpp
 
 # Object files
 OBJ = $(SRC:$(SRC_DIR)%.cpp=$(OBJ_DIR)%.o)
